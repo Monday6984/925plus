@@ -1,0 +1,843 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>925+ Funding | 925+</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --brown: #2c1a0e;
+        --terra: #c9742a;
+        --cream: #f5f0e8;
+        --sand: #e8d5b0;
+        --gold: #c9a96e;
+        --burnt: #a85520;
+        --brown-light: rgba(44, 26, 14, 0.75);
+      }
+
+      body {
+        font-family: "DM Sans", sans-serif;
+        background: var(--cream);
+        color: var(--brown);
+        line-height: 1.65;
+        font-size: 16px;
+      }
+
+      nav {
+        background: var(--brown);
+        padding: 1rem 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+      .nav-logo {
+        font-family: "Playfair Display", serif;
+        font-size: 1.6rem;
+        font-weight: 900;
+        color: var(--terra);
+        letter-spacing: -0.02em;
+        text-decoration: none;
+      }
+      .nav-logo sup {
+        font-size: 0.7em;
+        color: var(--gold);
+        vertical-align: super;
+      }
+      .nav-links {
+        display: flex;
+        gap: 1.5rem;
+        list-style: none;
+      }
+      .nav-links a {
+        color: rgba(245, 240, 232, 0.7);
+        text-decoration: none;
+        font-size: 0.875rem;
+        font-weight: 500;
+        transition: color 0.2s;
+      }
+      .nav-links a:hover,
+      .nav-links a.active {
+        color: var(--terra);
+      }
+      .nav-cta {
+        background: var(--terra);
+        color: var(--cream) !important;
+        padding: 0.5rem 1.25rem;
+        border-radius: 2px;
+      }
+      .nav-cta:hover {
+        background: var(--burnt) !important;
+      }
+
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 4px;
+        z-index: 200;
+      }
+      .hamburger span {
+        display: block;
+        width: 24px;
+        height: 2px;
+        background: var(--cream);
+        border-radius: 2px;
+        transition:
+          transform 0.3s,
+          opacity 0.3s;
+        transform-origin: center;
+      }
+      .hamburger.open span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+      .hamburger.open span:nth-child(2) {
+        opacity: 0;
+      }
+      .hamburger.open span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+      .mobile-menu {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--brown);
+        z-index: 150;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .mobile-menu.open {
+        display: flex;
+      }
+      .mobile-menu a {
+        color: rgba(245, 240, 232, 0.75);
+        text-decoration: none;
+        font-size: 1.25rem;
+        font-weight: 500;
+        padding: 1.1rem 2rem;
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid rgba(245, 240, 232, 0.06);
+        transition: color 0.2s;
+      }
+      .mobile-menu a:hover {
+        color: var(--terra);
+      }
+      .mobile-menu a.mobile-cta {
+        margin-top: 1.5rem;
+        background: var(--terra);
+        color: var(--cream);
+        border-radius: 2px;
+        width: auto;
+        padding: 0.875rem 2.5rem;
+        border: none;
+      }
+
+      .hero {
+        background: var(--brown);
+        padding: 6rem 2rem 5rem;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: repeating-linear-gradient(
+          45deg,
+          transparent,
+          transparent 60px,
+          rgba(201, 116, 42, 0.03) 60px,
+          rgba(201, 116, 42, 0.03) 61px
+        );
+        pointer-events: none;
+      }
+      .hero-inner {
+        max-width: 920px;
+        margin: 0 auto;
+        position: relative;
+      }
+      .eyebrow {
+        display: inline-block;
+        font-size: 0.75rem;
+        font-weight: 500;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 1.5rem;
+        border-left: 2px solid var(--terra);
+        padding-left: 0.75rem;
+      }
+      .hero h1 {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(2.2rem, 5vw, 3.6rem);
+        font-weight: 900;
+        color: var(--cream);
+        line-height: 1.15;
+        margin-bottom: 1.5rem;
+      }
+      .hero h1 em {
+        font-style: italic;
+        color: var(--terra);
+      }
+      .hero p {
+        font-size: 1.125rem;
+        color: rgba(245, 240, 232, 0.72);
+        max-width: 560px;
+        line-height: 1.75;
+      }
+
+      section {
+        padding: 5rem 2rem;
+      }
+      .section-inner {
+        max-width: 900px;
+        margin: 0 auto;
+      }
+      .section-label {
+        font-size: 0.7rem;
+        font-weight: 500;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--terra);
+        margin-bottom: 1rem;
+        display: block;
+      }
+      h2 {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(1.8rem, 4vw, 2.6rem);
+        font-weight: 700;
+        line-height: 1.2;
+        color: var(--brown);
+        margin-bottom: 1.5rem;
+      }
+
+      /* REALITY */
+      .reality {
+        background: var(--sand);
+        border-top: 3px solid var(--terra);
+      }
+      .reality-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+        margin-top: 2rem;
+      }
+      .reality p {
+        color: var(--brown-light);
+        font-size: 1.0625rem;
+        line-height: 1.85;
+        margin-bottom: 1.25rem;
+      }
+      .reality-statement {
+        background: var(--brown);
+        padding: 3rem 2.5rem;
+      }
+      .reality-statement p {
+        font-family: "Playfair Display", serif;
+        font-size: 1.3rem;
+        font-style: italic;
+        color: var(--cream);
+        line-height: 1.65;
+        margin: 0;
+      }
+      .reality-statement span {
+        display: block;
+        width: 40px;
+        height: 2px;
+        background: var(--terra);
+        margin-top: 1.5rem;
+      }
+
+      /* WHAT WE DO */
+      .what {
+        background: var(--cream);
+      }
+      .what > .section-inner > p {
+        color: var(--brown-light);
+        font-size: 1.0625rem;
+        line-height: 1.85;
+        max-width: 680px;
+        margin-bottom: 3rem;
+      }
+      .pillars-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+      }
+      .pillar-card {
+        background: var(--sand);
+        padding: 2rem 1.75rem;
+        border-left: 4px solid var(--terra);
+        transition: transform 0.2s;
+      }
+      .pillar-card:hover {
+        transform: translateX(4px);
+      }
+      .pillar-num {
+        font-family: "Playfair Display", serif;
+        font-size: 2rem;
+        font-weight: 900;
+        color: var(--terra);
+        opacity: 0.25;
+        line-height: 1;
+        margin-bottom: 0.75rem;
+      }
+      .pillar-card h3 {
+        font-family: "Playfair Display", serif;
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--brown);
+        margin-bottom: 0.75rem;
+      }
+      .pillar-card p {
+        color: var(--brown-light);
+        font-size: 0.9375rem;
+        line-height: 1.7;
+      }
+
+      /* WHO IT IS FOR */
+      .who {
+        background: var(--brown);
+      }
+      .who h2 {
+        color: var(--cream);
+      }
+      .who .section-label {
+        color: var(--gold);
+      }
+      .who-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: start;
+        margin-top: 2rem;
+      }
+      .who p {
+        color: rgba(245, 240, 232, 0.7);
+        font-size: 1.0625rem;
+        line-height: 1.85;
+        margin-bottom: 1.25rem;
+      }
+      .who-signs {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+      }
+      .who-sign {
+        display: flex;
+        gap: 1rem;
+        align-items: flex-start;
+        padding: 1.1rem 0;
+        border-bottom: 1px solid rgba(245, 240, 232, 0.06);
+      }
+      .who-sign:last-child {
+        border-bottom: none;
+      }
+      .who-sign-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--terra);
+        flex-shrink: 0;
+        margin-top: 8px;
+      }
+      .who-sign p {
+        color: rgba(245, 240, 232, 0.65);
+        font-size: 0.9375rem;
+        line-height: 1.65;
+        margin: 0;
+      }
+
+      /* COMMUNITY ANGLE */
+      .community-angle {
+        background: var(--sand);
+      }
+      .community-angle-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+      }
+      .community-angle p {
+        color: var(--brown-light);
+        font-size: 1.0625rem;
+        line-height: 1.85;
+        margin-bottom: 1.25rem;
+      }
+      .community-pull {
+        background: var(--cream);
+        padding: 2.5rem;
+        border-top: 3px solid var(--gold);
+      }
+      .community-pull p {
+        font-family: "Playfair Display", serif;
+        font-size: 1.15rem;
+        font-style: italic;
+        color: var(--brown);
+        line-height: 1.65;
+        margin: 0;
+      }
+      .community-pull span {
+        display: block;
+        width: 40px;
+        height: 2px;
+        background: var(--gold);
+        margin-top: 1.5rem;
+      }
+
+      /* CLOSING */
+      .closing {
+        background: var(--brown);
+        text-align: center;
+        padding: 5rem 2rem;
+      }
+      .closing h2 {
+        color: var(--cream);
+        max-width: 640px;
+        margin: 0 auto 1.5rem;
+      }
+      .closing p {
+        color: rgba(245, 240, 232, 0.65);
+        font-size: 1.0625rem;
+        max-width: 520px;
+        margin: 0 auto;
+        line-height: 1.8;
+      }
+
+      /* CTA */
+      .final-cta {
+        background: var(--terra);
+        text-align: center;
+        padding: 5rem 2rem;
+      }
+      .final-cta h2 {
+        color: var(--cream);
+        font-size: clamp(2rem, 5vw, 3rem);
+        margin-bottom: 1rem;
+      }
+      .final-cta p {
+        color: rgba(245, 240, 232, 0.85);
+        font-size: 1.0625rem;
+        max-width: 460px;
+        margin: 0 auto 2rem;
+        line-height: 1.75;
+      }
+      .btn-cream {
+        display: inline-block;
+        background: var(--cream);
+        color: var(--brown);
+        padding: 0.875rem 2.5rem;
+        font-weight: 500;
+        font-size: 0.9375rem;
+        border-radius: 2px;
+        text-decoration: none;
+        transition:
+          background 0.2s,
+          transform 0.15s;
+      }
+      .btn-cream:hover {
+        background: var(--sand);
+        transform: translateY(-1px);
+      }
+      .fine-print {
+        color: rgba(245, 240, 232, 0.6);
+        font-size: 0.8125rem;
+        margin-top: 1rem;
+      }
+
+      footer {
+        background: #1a0e06;
+        padding: 3rem 2rem;
+      }
+      .footer-inner {
+        max-width: 900px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 2rem;
+      }
+      .footer-logo {
+        font-family: "Playfair Display", serif;
+        font-size: 1.5rem;
+        font-weight: 900;
+        color: var(--terra);
+      }
+      .footer-logo sup {
+        color: var(--gold);
+        font-size: 0.65em;
+      }
+      .footer-tagline {
+        font-size: 0.8125rem;
+        color: rgba(245, 240, 232, 0.4);
+        margin-top: 0.35rem;
+        font-style: italic;
+      }
+      .footer-links {
+        display: flex;
+        gap: 1.5rem;
+        list-style: none;
+        flex-wrap: wrap;
+      }
+      .footer-links a {
+        color: rgba(245, 240, 232, 0.45);
+        font-size: 0.8125rem;
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      .footer-links a:hover {
+        color: var(--terra);
+      }
+      .footer-bottom {
+        max-width: 900px;
+        margin: 2rem auto 0;
+        padding-top: 1.5rem;
+        border-top: 1px solid rgba(245, 240, 232, 0.08);
+        font-size: 0.75rem;
+        color: rgba(245, 240, 232, 0.25);
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      @media (max-width: 768px) {
+        .reality-grid,
+        .who-grid,
+        .community-angle-grid {
+          grid-template-columns: 1fr;
+        }
+        .pillars-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .nav-links {
+          display: none;
+        }
+        .hamburger {
+          display: flex;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="index.html" class="nav-logo">925<sup>+</sup></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="community.html">Community</a></li>
+        <li><a href="futures.html">925+ Futures</a></li>
+        <li><a href="health.html">925+ Health</a></li>
+        <li><a href="visibility.html">925+ Visibility</a></li>
+        <li><a href="register.html" class="nav-cta">Join Us</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="index.html" onclick="closeMenu()">Home</a>
+      <a href="about.html" onclick="closeMenu()">About</a>
+      <a href="community.html" onclick="closeMenu()">Community</a>
+      <a href="futures.html" onclick="closeMenu()">925+ Futures</a>
+      <a href="health.html" onclick="closeMenu()">925+ Health</a>
+      <a href="visibility.html" onclick="closeMenu()">925+ Visibility</a>
+      <a href="funding.html" class="active" onclick="closeMenu()"
+        >925+ Funding</a
+      >
+      <a href="register.html" class="mobile-cta" onclick="closeMenu()"
+        >Join Us</a
+      >
+    </div>
+
+    <section class="hero">
+      <div class="hero-inner">
+        <span class="eyebrow">925+ Funding</span>
+        <h1>Your Salary Is Not <em>Your Ceiling.</em></h1>
+        <p>
+          925+ Funding is where professionals have honest conversations about
+          money, income, and building financial futures that go beyond the
+          monthly paycheck.
+        </p>
+      </div>
+    </section>
+
+    <section class="reality">
+      <div class="section-inner">
+        <span class="section-label">The Conversation Nobody Is Having</span>
+        <h2>You Were Trained to Earn. Nobody Taught You to Build.</h2>
+        <div class="reality-grid">
+          <div>
+            <p>
+              Most professionals were trained to earn. Study hard, get a good
+              job, collect a salary, repeat. Nobody taught you how to build
+              income streams beyond that salary. Nobody showed you how to
+              position your expertise as something people pay for outside of
+              your employer.
+            </p>
+            <p>
+              Nobody had the honest conversation about grants, investments, side
+              businesses, and what financial independence actually looks like
+              for someone with your background.
+            </p>
+            <p>
+              And so most professionals stay stuck. Not because they lack
+              ambition. Not because they lack skill. But because they lack the
+              information, the community, and the permission to think bigger
+              about money.
+            </p>
+            <p>925+ Funding is that conversation. Finally.</p>
+          </div>
+          <div class="reality-statement">
+            <p>
+              "Most professionals stay stuck not because they lack ambition, but
+              because they lack the permission to think bigger about money."
+            </p>
+            <span></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="what">
+      <div class="section-inner">
+        <span class="section-label">What Happens Inside 925+ Funding</span>
+        <h2>Four Conversations That Change How You Think About Income.</h2>
+        <p>
+          925+ Funding is built around the conversations that most professional
+          spaces avoid. Practical, honest, and grounded in the reality of
+          building wealth in Nigeria.
+        </p>
+        <div class="pillars-grid">
+          <div class="pillar-card">
+            <div class="pillar-num">01</div>
+            <h3>Income Beyond the Salary</h3>
+            <p>
+              Conversations and frameworks around building income streams that
+              complement your career. Consulting, freelancing, monetising
+              expertise, and building products from what you already know.
+            </p>
+          </div>
+          <div class="pillar-card">
+            <div class="pillar-num">02</div>
+            <h3>Grants and Opportunities</h3>
+            <p>
+              Information, guidance, and community support for professionals
+              looking to access grants, fellowships, and funding opportunities.
+              Many professionals do not apply because they do not know where to
+              look or how to position themselves.
+            </p>
+          </div>
+          <div class="pillar-card">
+            <div class="pillar-num">03</div>
+            <h3>Investment Conversations</h3>
+            <p>
+              Honest, accessible conversations about personal finance and
+              investment for the Nigerian professional. Not jargon. Not theory.
+              Practical guidance from people who are figuring it out alongside
+              you.
+            </p>
+          </div>
+          <div class="pillar-card">
+            <div class="pillar-num">04</div>
+            <h3>Business Building</h3>
+            <p>
+              Support for professionals who are building businesses, side
+              hustles, or ventures alongside their careers. From idea to first
+              client to scaling, the community shares what works and what does
+              not.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="who">
+      <div class="section-inner">
+        <span class="section-label">Who 925+ Funding Is For</span>
+        <h2>
+          Any Professional Who Has Ever Felt Their Income Does Not Reflect Their
+          Value.
+        </h2>
+        <div class="who-grid">
+          <div>
+            <p>
+              Any professional who wants to build something beyond their job but
+              does not know where to start. Any professional who has heard about
+              grants, investments, or income diversification but never had a
+              trusted space to explore what it means for them personally.
+            </p>
+            <p>
+              You do not need to already be building a business. You just need
+              to be open to the possibility that there is more.
+            </p>
+          </div>
+          <div class="who-signs">
+            <div class="who-sign">
+              <div class="who-sign-dot"></div>
+              <p>
+                You have skills people pay for but you have never charged anyone
+                outside your employer.
+              </p>
+            </div>
+            <div class="who-sign">
+              <div class="who-sign-dot"></div>
+              <p>
+                You have heard about grants and fellowships but never applied
+                because you did not know how.
+              </p>
+            </div>
+            <div class="who-sign">
+              <div class="who-sign-dot"></div>
+              <p>
+                You have a business idea that has been sitting in your head for
+                longer than you want to admit.
+              </p>
+            </div>
+            <div class="who-sign">
+              <div class="who-sign-dot"></div>
+              <p>
+                You want to invest but do not know where to start or who to
+                trust for advice.
+              </p>
+            </div>
+            <div class="who-sign">
+              <div class="who-sign-dot"></div>
+              <p>
+                Your salary feels like it should be the floor, not the ceiling,
+                of what you earn.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="community-angle">
+      <div class="section-inner">
+        <span class="section-label">The Community Advantage</span>
+        <h2>You Do Not Have to Figure This Out Alone.</h2>
+        <div class="community-angle-grid">
+          <div>
+            <p>
+              The most valuable thing about 925+ Funding is not any single piece
+              of information. It is the community around it. Professionals who
+              have navigated the same questions. People who have applied for
+              grants and can tell you exactly how.
+            </p>
+            <p>
+              Entrepreneurs who built their first income stream while still in a
+              full-time job and can show you the path. When you are in a room
+              with people who are a few steps ahead of where you are, the
+              distance between where you are and where you want to be shrinks
+              dramatically.
+            </p>
+          </div>
+          <div class="community-pull">
+            <p>
+              "When you are in a room with people who are a few steps ahead of
+              where you are, the distance between where you are and where you
+              want to be shrinks dramatically."
+            </p>
+            <span></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing">
+      <div class="section-inner">
+        <span class="section-label">A Closing Word</span>
+        <h2>What You Know Is Worth More Than Your Salary Suggests.</h2>
+        <p>
+          925+ Funding is where you start building the financial life that
+          matches the professional you already are.
+        </p>
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <h2>Ready to Build Beyond the Paycheck?</h2>
+      <p>
+        Join 925+ and become part of a community that takes your financial
+        growth as seriously as your career growth.
+      </p>
+      <a href="register.html" class="btn-cream">Join 925+ Funding</a>
+      <p class="fine-print">
+        Free to join. Real conversations. Real professionals. Real growth.
+      </p>
+    </section>
+
+    <footer>
+      <div class="footer-inner">
+        <div>
+          <div class="footer-logo">925<sup>+</sup></div>
+          <div class="footer-tagline">More than the job. More than enough.</div>
+        </div>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="community.html">Community</a></li>
+          <li><a href="futures.html">925+ Futures</a></li>
+          <li><a href="health.html">925+ Health</a></li>
+          <li><a href="visibility.html">925+ Visibility</a></li>
+          <li><a href="funding.html">925+ Funding</a></li>
+          <li><a href="register.html">Join Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-bottom">
+        <span>925+ | Powered by K-STEPS Technologies</span>
+        <span>925plus.k-steps.com</span>
+      </div>
+    </footer>
+
+    <script>
+      const hamburger = document.getElementById("hamburger");
+      const mobileMenu = document.getElementById("mobileMenu");
+      hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("open");
+        mobileMenu.classList.toggle("open");
+        document.body.style.overflow = mobileMenu.classList.contains("open")
+          ? "hidden"
+          : "";
+      });
+      function closeMenu() {
+        hamburger.classList.remove("open");
+        mobileMenu.classList.remove("open");
+        document.body.style.overflow = "";
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,927 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About | 925+ Community</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --brown: #2c1a0e;
+        --terra: #c9742a;
+        --cream: #f5f0e8;
+        --sand: #e8d5b0;
+        --gold: #c9a96e;
+        --burnt: #a85520;
+        --brown-light: rgba(44, 26, 14, 0.75);
+      }
+
+      body {
+        font-family: "DM Sans", sans-serif;
+        background: var(--cream);
+        color: var(--brown);
+        line-height: 1.65;
+        font-size: 16px;
+      }
+
+      nav {
+        background: var(--brown);
+        padding: 1rem 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .nav-logo {
+        font-family: "Playfair Display", serif;
+        font-size: 1.6rem;
+        font-weight: 900;
+        color: var(--terra);
+        letter-spacing: -0.02em;
+        text-decoration: none;
+      }
+      .nav-logo sup {
+        font-size: 0.7em;
+        color: var(--gold);
+        vertical-align: super;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 1.5rem;
+        list-style: none;
+      }
+      .nav-links a {
+        color: rgba(245, 240, 232, 0.7);
+        text-decoration: none;
+        font-size: 0.875rem;
+        font-weight: 500;
+        transition: color 0.2s;
+      }
+      .nav-links a:hover {
+        color: var(--terra);
+      }
+      .nav-links a.active {
+        color: var(--terra);
+      }
+      .nav-cta {
+        background: var(--terra);
+        color: var(--cream) !important;
+        padding: 0.5rem 1.25rem;
+        border-radius: 2px;
+      }
+      .nav-cta:hover {
+        background: var(--burnt) !important;
+      }
+
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 4px;
+        z-index: 200;
+      }
+      .hamburger span {
+        display: block;
+        width: 24px;
+        height: 2px;
+        background: var(--cream);
+        border-radius: 2px;
+        transition:
+          transform 0.3s,
+          opacity 0.3s;
+        transform-origin: center;
+      }
+      .hamburger.open span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+      .hamburger.open span:nth-child(2) {
+        opacity: 0;
+      }
+      .hamburger.open span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+
+      .mobile-menu {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--brown);
+        z-index: 150;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .mobile-menu.open {
+        display: flex;
+      }
+      .mobile-menu a {
+        color: rgba(245, 240, 232, 0.75);
+        text-decoration: none;
+        font-size: 1.25rem;
+        font-weight: 500;
+        padding: 1.1rem 2rem;
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid rgba(245, 240, 232, 0.06);
+        transition: color 0.2s;
+      }
+      .mobile-menu a:hover {
+        color: var(--terra);
+      }
+      .mobile-menu a.mobile-cta {
+        margin-top: 1.5rem;
+        background: var(--terra);
+        color: var(--cream);
+        border-radius: 2px;
+        width: auto;
+        padding: 0.875rem 2.5rem;
+        border: none;
+      }
+
+      .hero {
+        background: var(--brown);
+        padding: 6rem 2rem 5rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: repeating-linear-gradient(
+          45deg,
+          transparent,
+          transparent 60px,
+          rgba(201, 116, 42, 0.03) 60px,
+          rgba(201, 116, 42, 0.03) 61px
+        );
+        pointer-events: none;
+      }
+
+      .hero-inner {
+        max-width: 920px;
+        margin: 0 auto;
+        position: relative;
+      }
+
+      .eyebrow {
+        display: inline-block;
+        font-size: 0.75rem;
+        font-weight: 500;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 1.5rem;
+        border-left: 2px solid var(--terra);
+        padding-left: 0.75rem;
+      }
+
+      .hero h1 {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(2.4rem, 5vw, 3.8rem);
+        font-weight: 900;
+        color: var(--cream);
+        line-height: 1.15;
+        margin-bottom: 1.5rem;
+      }
+      .hero h1 em {
+        font-style: italic;
+        color: var(--terra);
+      }
+
+      .hero p {
+        font-size: 1.125rem;
+        color: rgba(245, 240, 232, 0.72);
+        max-width: 560px;
+        line-height: 1.75;
+      }
+
+      section {
+        padding: 5rem 2rem;
+      }
+      .section-inner {
+        max-width: 900px;
+        margin: 0 auto;
+      }
+      .section-label {
+        font-size: 0.7rem;
+        font-weight: 500;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--terra);
+        margin-bottom: 1rem;
+        display: block;
+      }
+
+      h2 {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(1.8rem, 4vw, 2.6rem);
+        font-weight: 700;
+        line-height: 1.2;
+        color: var(--brown);
+        margin-bottom: 1.5rem;
+      }
+
+      /* ORIGIN */
+      .origin {
+        background: var(--sand);
+        border-top: 3px solid var(--terra);
+      }
+      .origin-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+        margin-top: 2rem;
+      }
+      .origin p {
+        color: var(--brown-light);
+        font-size: 1.0625rem;
+        line-height: 1.85;
+        margin-bottom: 1.25rem;
+      }
+
+      .stat-block {
+        background: var(--brown);
+        padding: 2.5rem 2rem;
+      }
+      .stat-number {
+        font-family: "Playfair Display", serif;
+        font-size: 4rem;
+        font-weight: 900;
+        color: var(--terra);
+        line-height: 1;
+        margin-bottom: 0.5rem;
+      }
+      .stat-label {
+        color: rgba(245, 240, 232, 0.65);
+        font-size: 0.9375rem;
+        line-height: 1.6;
+      }
+      .stat-divider {
+        width: 40px;
+        height: 2px;
+        background: var(--terra);
+        margin: 1.5rem 0;
+      }
+
+      /* BELIEF */
+      .belief {
+        background: var(--brown);
+      }
+      .belief h2 {
+        color: var(--cream);
+      }
+      .belief .section-label {
+        color: var(--gold);
+      }
+      .belief-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+        margin-top: 2.5rem;
+      }
+      .belief-card {
+        border-top: 2px solid var(--terra);
+        padding-top: 1.5rem;
+      }
+      .belief-card p {
+        color: rgba(245, 240, 232, 0.65);
+        font-size: 0.9375rem;
+        line-height: 1.75;
+      }
+      .belief-card strong {
+        display: block;
+        color: var(--cream);
+        font-size: 1rem;
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+      }
+
+      /* FOUNDER */
+      .founder {
+        background: var(--cream);
+      }
+      .founder-grid {
+        display: grid;
+        grid-template-columns: 280px 1fr;
+        gap: 4rem;
+        align-items: start;
+        margin-top: 2.5rem;
+      }
+
+      .founder-photo {
+        width: 100%;
+        aspect-ratio: 3/4;
+        background: var(--sand);
+        border: 2px dashed rgba(44, 26, 14, 0.2);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.75rem;
+        color: var(--brown-light);
+        font-size: 0.8125rem;
+        text-align: center;
+        padding: 1rem;
+      }
+
+      .founder-photo-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: var(--sand);
+        border: 2px dashed rgba(44, 26, 14, 0.25);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .founder-photo-icon svg {
+        width: 24px;
+        height: 24px;
+        fill: rgba(44, 26, 14, 0.3);
+      }
+
+      .founder-name {
+        font-family: "Playfair Display", serif;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--brown);
+        margin-bottom: 0.25rem;
+      }
+      .founder-title {
+        font-size: 0.875rem;
+        color: var(--terra);
+        font-weight: 500;
+        margin-bottom: 1.5rem;
+        letter-spacing: 0.02em;
+      }
+      .founder p {
+        color: var(--brown-light);
+        font-size: 1.0625rem;
+        line-height: 1.85;
+        margin-bottom: 1.25rem;
+      }
+
+      /* VISION */
+      .vision {
+        background: var(--sand);
+      }
+      .vision-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        margin-top: 2.5rem;
+      }
+      .vision p {
+        color: var(--brown-light);
+        font-size: 1.0625rem;
+        line-height: 1.85;
+        margin-bottom: 1.25rem;
+      }
+
+      .vision-milestones {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+      }
+      .milestone {
+        display: flex;
+        gap: 1.25rem;
+        padding: 1.25rem 0;
+        border-bottom: 1px solid rgba(44, 26, 14, 0.1);
+      }
+      .milestone:last-child {
+        border-bottom: none;
+      }
+      .milestone-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--terra);
+        flex-shrink: 0;
+        margin-top: 6px;
+      }
+      .milestone-text {
+        font-size: 0.9375rem;
+        color: var(--brown-light);
+        line-height: 1.65;
+      }
+      .milestone-text strong {
+        color: var(--brown);
+        font-weight: 500;
+        display: block;
+        margin-bottom: 0.2rem;
+      }
+
+      /* KSTEPS */
+      .ksteps {
+        background: var(--brown);
+        text-align: center;
+      }
+      .ksteps h2 {
+        color: var(--cream);
+        max-width: 560px;
+        margin: 0 auto 1.5rem;
+      }
+      .ksteps .section-label {
+        text-align: center;
+        color: var(--gold);
+      }
+      .ksteps p {
+        color: rgba(245, 240, 232, 0.65);
+        max-width: 540px;
+        margin: 0 auto 0.75rem;
+        font-size: 1.0625rem;
+        line-height: 1.8;
+      }
+      .ksteps a {
+        color: var(--gold);
+        font-weight: 500;
+        text-decoration: none;
+        font-size: 0.9375rem;
+        display: inline-block;
+        margin-top: 1rem;
+        border-bottom: 1px solid rgba(201, 169, 110, 0.4);
+        padding-bottom: 2px;
+      }
+      .ksteps a:hover {
+        color: var(--terra);
+        border-color: var(--terra);
+      }
+
+      /* CTA */
+      .final-cta {
+        background: var(--terra);
+        text-align: center;
+        padding: 5rem 2rem;
+      }
+      .final-cta h2 {
+        color: var(--cream);
+        font-size: clamp(2rem, 5vw, 3rem);
+        margin-bottom: 1rem;
+      }
+      .final-cta p {
+        color: rgba(245, 240, 232, 0.85);
+        font-size: 1.0625rem;
+        max-width: 460px;
+        margin: 0 auto 2rem;
+        line-height: 1.75;
+      }
+      .btn-cream {
+        display: inline-block;
+        background: var(--cream);
+        color: var(--brown);
+        padding: 0.875rem 2.5rem;
+        font-weight: 500;
+        font-size: 0.9375rem;
+        border-radius: 2px;
+        text-decoration: none;
+        transition:
+          background 0.2s,
+          transform 0.15s;
+      }
+      .btn-cream:hover {
+        background: var(--sand);
+        transform: translateY(-1px);
+      }
+      .fine-print {
+        color: rgba(245, 240, 232, 0.6);
+        font-size: 0.8125rem;
+        margin-top: 1rem;
+      }
+
+      /* FOOTER */
+      footer {
+        background: #1a0e06;
+        padding: 3rem 2rem;
+      }
+      .footer-inner {
+        max-width: 900px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 2rem;
+      }
+      .footer-logo {
+        font-family: "Playfair Display", serif;
+        font-size: 1.5rem;
+        font-weight: 900;
+        color: var(--terra);
+      }
+      .footer-logo sup {
+        color: var(--gold);
+        font-size: 0.65em;
+      }
+      .footer-tagline {
+        font-size: 0.8125rem;
+        color: rgba(245, 240, 232, 0.4);
+        margin-top: 0.35rem;
+        font-style: italic;
+      }
+      .footer-links {
+        display: flex;
+        gap: 1.5rem;
+        list-style: none;
+        flex-wrap: wrap;
+      }
+      .footer-links a {
+        color: rgba(245, 240, 232, 0.45);
+        font-size: 0.8125rem;
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      .footer-links a:hover {
+        color: var(--terra);
+      }
+      .footer-bottom {
+        max-width: 900px;
+        margin: 2rem auto 0;
+        padding-top: 1.5rem;
+        border-top: 1px solid rgba(245, 240, 232, 0.08);
+        font-size: 0.75rem;
+        color: rgba(245, 240, 232, 0.25);
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      @media (max-width: 768px) {
+        .origin-grid,
+        .vision-grid {
+          grid-template-columns: 1fr;
+        }
+        .founder-grid {
+          grid-template-columns: 1fr;
+        }
+        .founder-photo {
+          aspect-ratio: 1/1;
+          max-width: 220px;
+        }
+        .belief-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .nav-links {
+          display: none;
+        }
+        .hamburger {
+          display: flex;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="index.html" class="nav-logo">925<sup>+</sup></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="community.html">Community</a></li>
+        <li><a href="futures.html">925+ Futures</a></li>
+        <li><a href="health.html">925+ Health</a></li>
+        <li><a href="visibility.html">925+ Visibility</a></li>
+        <li><a href="register.html" class="nav-cta">Join Us</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="index.html" onclick="closeMenu()">Home</a>
+      <a href="about.html" onclick="closeMenu()">About</a>
+      <a href="community.html" onclick="closeMenu()">Community</a>
+      <a href="futures.html" onclick="closeMenu()">925+ Futures</a>
+      <a href="health.html" onclick="closeMenu()">925+ Health</a>
+      <a href="visibility.html" onclick="closeMenu()">925+ Visibility</a>
+      <a href="funding.html" onclick="closeMenu()">925+ Funding</a>
+      <a href="register.html" class="mobile-cta" onclick="closeMenu()"
+        >Join Us</a
+      >
+    </div>
+
+    <section class="hero">
+      <div class="hero-inner">
+        <span class="eyebrow">Our Story</span>
+        <h1>
+          We Built This Because the Professionals Around Us
+          <em>Deserved Better.</em>
+        </h1>
+        <p>
+          925+ did not start as a business idea. It started as a conversation
+          about what it means to build a career that actually matters.
+        </p>
+      </div>
+    </section>
+
+    <section class="origin">
+      <div class="section-inner">
+        <span class="section-label">Where It Started</span>
+        <h2>A Room Full of People Who Were Still Reaching.</h2>
+        <div class="origin-grid">
+          <div>
+            <p>
+              In early 2026, we held our first webinar. Ninety-two professionals
+              registered. They came from medicine, education, technology, law,
+              media, agriculture, and everywhere in between. They were
+              qualified. They were capable. They were showing up every day.
+            </p>
+            <p>
+              But when we asked what they were struggling with, the answers were
+              striking in how similar they were. How do I go further without
+              burning out? How do I stay relevant? How do I be seen? How do I
+              know what is next?
+            </p>
+            <p>
+              These were not the questions of people who had given up. These
+              were the questions of people who were still reaching, still
+              building, still believing there was more. They just did not have a
+              place to figure it out together.
+            </p>
+            <p>925+ is that place.</p>
+          </div>
+          <div class="stat-block">
+            <div class="stat-number">92</div>
+            <div class="stat-label">
+              Professionals registered for our first webinar alone. From
+              medicine, education, technology, law, media, agriculture, and
+              more.
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-number" style="font-size: 2.5rem">1 Question</div>
+            <div class="stat-label">
+              Almost all of them were asking the same thing: how do I be more
+              than this?
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="belief">
+      <div class="section-inner">
+        <span class="section-label">What We Believe</span>
+        <h2>The Convictions That Built This Community.</h2>
+        <div class="belief-grid">
+          <div class="belief-card">
+            <strong>Your career is the starting point, not the ceiling.</strong>
+            <p>
+              Whatever you have built so far is not the limit of what is
+              possible. It is the foundation for what comes next.
+            </p>
+          </div>
+          <div class="belief-card">
+            <strong>Visibility is not vanity. It is strategy.</strong>
+            <p>
+              The African professional is one of the most underrepresented
+              stories in the world. Not because the talent is absent, but
+              because the visibility has not been there.
+            </p>
+          </div>
+          <div class="belief-card">
+            <strong>Community accelerates everything.</strong>
+            <p>
+              When professionals grow together, they grow faster, further, and
+              with far less of the loneliness that usually comes with ambition.
+            </p>
+          </div>
+          <div class="belief-card">
+            <strong
+              >The next generation deserves to see what is possible.</strong
+            >
+            <p>
+              Before they decide it is not. Before the wrong narratives take
+              root. Before they give up on the careers that could change their
+              lives.
+            </p>
+          </div>
+          <div class="belief-card">
+            <strong>Belonging should not be gatekept.</strong>
+            <p>
+              You do not need a certain title, a certain salary, or a certain
+              level of success to belong here. You just need to have decided to
+              be more.
+            </p>
+          </div>
+          <div class="belief-card">
+            <strong>Generosity is the default.</strong>
+            <p>
+              We share what we know, open the doors we have walked through, and
+              invest in each other without keeping score.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="founder">
+      <div class="section-inner">
+        <span class="section-label">Who Is Behind 925+</span>
+        <h2>Built by Someone Who Has Been in That Room.</h2>
+        <div class="founder-grid">
+          <div>
+            <div class="founder-photo">
+              <div class="founder-photo-icon">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"
+                  />
+                </svg>
+              </div>
+              <span>Photo placeholder<br />Replace with founder image</span>
+            </div>
+          </div>
+          <div>
+            <div class="founder-name">Dr. Testimony Olajire</div>
+            <div class="founder-title">
+              Founder, 925+ &amp; K-STEPS Technologies
+            </div>
+            <p>
+              925+ is founded by Dr. Testimony Olajire, CEO and founder of
+              K-STEPS Technologies, a ghostwriter, personal branding strategist,
+              and someone who has spent years helping African professionals
+              become visible in the rooms that matter.
+            </p>
+            <p>
+              925+ grew out of a simple observation: the professionals who
+              needed community the most were the ones least likely to find it in
+              the places that already existed. Too formal. Too transactional.
+              Too distant from the reality of building a career in Nigeria.
+            </p>
+            <p>
+              So we built something different. Warm. Industry-based. Built for
+              action, not just conversation.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="vision">
+      <div class="section-inner">
+        <span class="section-label">Where We Are Going</span>
+        <h2>A Continent-Wide Network of Professionals Who Show Up.</h2>
+        <div class="vision-grid">
+          <div>
+            <p>
+              925+ is building a continent-wide network of professionals who are
+              visible, connected, and invested in each other's growth.
+            </p>
+            <p>
+              In the near term, that means industry chapters across healthcare,
+              education, technology, media, law, and beyond. It means career
+              outreach programmes in secondary schools and universities. It
+              means health outreaches, professional development, and funding
+              conversations.
+            </p>
+            <p>
+              In the long term, it means a generation of African professionals
+              who never had to figure it out alone.
+            </p>
+          </div>
+          <div class="vision-milestones">
+            <div class="milestone">
+              <div class="milestone-dot"></div>
+              <div class="milestone-text">
+                <strong>Industry Chapters</strong>Small, curated groups of
+                professionals in the same field growing together across Nigeria
+                and beyond.
+              </div>
+            </div>
+            <div class="milestone">
+              <div class="milestone-dot"></div>
+              <div class="milestone-text">
+                <strong>925+ Futures</strong>Career outreach in secondary
+                schools, polytechnics, and universities. Changing what young
+                people believe is possible.
+              </div>
+            </div>
+            <div class="milestone">
+              <div class="milestone-dot"></div>
+              <div class="milestone-text">
+                <strong>925+ Health</strong>Healthcare professionals running
+                community outreaches, screenings, and health talks beyond their
+                clinics.
+              </div>
+            </div>
+            <div class="milestone">
+              <div class="milestone-dot"></div>
+              <div class="milestone-text">
+                <strong>925+ Visibility</strong>A system for every professional
+                to show up online consistently, powered by K-STEPS Technologies.
+              </div>
+            </div>
+            <div class="milestone">
+              <div class="milestone-dot"></div>
+              <div class="milestone-text">
+                <strong>925+ Funding</strong>Honest conversations about money,
+                income, and building financial lives beyond the salary.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ksteps">
+      <div class="section-inner">
+        <span class="section-label">Powered By</span>
+        <h2>Built on a Belief.</h2>
+        <p>
+          925+ is powered by K-STEPS Technologies, an AI platform that helps
+          African professionals convert their expertise into consistent, visible
+          content. The two exist separately but share one conviction.
+        </p>
+        <p>
+          The professionals on this continent have more to offer than the world
+          has seen. K-STEPS gives you the tool. 925+ gives you the community.
+        </p>
+        <a href="https://k-steps.com" target="_blank"
+          >Learn more about K-STEPS at k-steps.com</a
+        >
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <h2>You Belong Here.</h2>
+      <p>If any part of this resonates, you are exactly who 925+ is for.</p>
+      <a href="register.html" class="btn-cream">Join the Community</a>
+      <p class="fine-print">
+        Free to join. No gatekeeping. Just professionals who chose more.
+      </p>
+    </section>
+
+    <footer>
+      <div class="footer-inner">
+        <div>
+          <div class="footer-logo">925<sup>+</sup></div>
+          <div class="footer-tagline">More than the job. More than enough.</div>
+        </div>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="community.html">Community</a></li>
+          <li><a href="futures.html">925+ Futures</a></li>
+          <li><a href="health.html">925+ Health</a></li>
+          <li><a href="visibility.html">925+ Visibility</a></li>
+          <li><a href="funding.html">925+ Funding</a></li>
+          <li><a href="register.html">Join Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-bottom">
+        <span>925+ | Powered by K-STEPS Technologies</span>
+        <span>925plus.k-steps.com</span>
+      </div>
+    </footer>
+
+    <script>
+      const hamburger = document.getElementById("hamburger");
+      const mobileMenu = document.getElementById("mobileMenu");
+      hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("open");
+        mobileMenu.classList.toggle("open");
+        document.body.style.overflow = mobileMenu.classList.contains("open")
+          ? "hidden"
+          : "";
+      });
+      function closeMenu() {
+        hamburger.classList.remove("open");
+        mobileMenu.classList.remove("open");
+        document.body.style.overflow = "";
+      }
+    </script>
+  </body>
+</html>

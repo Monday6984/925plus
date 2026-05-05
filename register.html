@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Join 925+ | 925+</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --brown: #2C1A0E;
+    --terra: #C9742A;
+    --cream: #F5F0E8;
+    --sand: #E8D5B0;
+    --gold: #C9A96E;
+    --burnt: #A85520;
+    --brown-light: rgba(44,26,14,0.75);
+  }
+
+  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--brown); line-height: 1.65; font-size: 16px; }
+
+  nav { background: var(--brown); padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+  .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 900; color: var(--terra); letter-spacing: -0.02em; text-decoration: none; }
+  .nav-logo sup { font-size: 0.7em; color: var(--gold); vertical-align: super; }
+  .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+  .nav-links a { color: rgba(245,240,232,0.7); text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--terra); }
+  .nav-cta { background: var(--terra); color: var(--cream) !important; padding: 0.5rem 1.25rem; border-radius: 2px; }
+  .nav-cta:hover { background: var(--burnt) !important; }
+
+  .hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; z-index: 200; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: var(--cream); border-radius: 2px; transition: transform 0.3s, opacity 0.3s; transform-origin: center; }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .mobile-menu { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--brown); z-index: 150; flex-direction: column; align-items: center; justify-content: center; }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a { color: rgba(245,240,232,0.75); text-decoration: none; font-size: 1.25rem; font-weight: 500; padding: 1.1rem 2rem; width: 100%; text-align: center; border-bottom: 1px solid rgba(245,240,232,0.06); transition: color 0.2s; }
+  .mobile-menu a:hover { color: var(--terra); }
+  .mobile-menu a.mobile-cta { margin-top: 1.5rem; background: var(--terra); color: var(--cream); border-radius: 2px; width: auto; padding: 0.875rem 2.5rem; border: none; }
+
+  .hero { background: var(--brown); padding: 5rem 2rem 4rem; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: repeating-linear-gradient(45deg, transparent, transparent 60px, rgba(201,116,42,0.03) 60px, rgba(201,116,42,0.03) 61px); pointer-events: none; }
+  .hero-inner { max-width: 640px; margin: 0 auto; position: relative; text-align: center; }
+  .eyebrow { display: inline-block; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; border-left: 2px solid var(--terra); padding-left: 0.75rem; text-align: left; }
+  .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 900; color: var(--cream); line-height: 1.15; margin-bottom: 1.25rem; }
+  .hero h1 em { font-style: italic; color: var(--terra); }
+  .hero p { font-size: 1.0625rem; color: rgba(245,240,232,0.65); line-height: 1.75; }
+
+  /* FORM SECTION */
+  .form-section { background: var(--cream); padding: 4rem 2rem 5rem; }
+  .form-wrap { max-width: 680px; margin: 0 auto; }
+
+  .form-intro { font-size: 1.0625rem; color: var(--brown-light); line-height: 1.8; margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(44,26,14,0.1); }
+
+  /* ZOHO EMBED PLACEHOLDER */
+  .zoho-placeholder {
+    background: var(--sand);
+    border: 2px dashed rgba(44,26,14,0.2);
+    padding: 4rem 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .zoho-placeholder .placeholder-icon {
+    width: 56px;
+    height: 56px;
+    background: rgba(44,26,14,0.06);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.25rem;
+  }
+
+  .zoho-placeholder .placeholder-icon svg {
+    width: 24px;
+    height: 24px;
+    fill: rgba(44,26,14,0.3);
+  }
+
+  .zoho-placeholder h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--brown);
+    margin-bottom: 0.75rem;
+  }
+
+  .zoho-placeholder p {
+    font-size: 0.9375rem;
+    color: var(--brown-light);
+    line-height: 1.65;
+    max-width: 420px;
+    margin: 0 auto 0.5rem;
+  }
+
+  .zoho-placeholder .dev-note {
+    display: inline-block;
+    margin-top: 1.5rem;
+    background: var(--brown);
+    color: var(--gold);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.5rem 1rem;
+    border-radius: 2px;
+  }
+
+  .form-note { font-size: 0.8125rem; color: rgba(44,26,14,0.45); line-height: 1.6; text-align: center; margin-top: 1.5rem; }
+
+  /* WHAT HAPPENS NEXT */
+  .next { background: var(--brown); padding: 5rem 2rem; }
+  .next-inner { max-width: 900px; margin: 0 auto; }
+  .next h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 2.4rem); font-weight: 700; color: var(--cream); margin-bottom: 0.5rem; }
+  .next .section-label { color: var(--gold); font-size: 0.7rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 1rem; display: block; }
+  .next-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+  .next-step { padding: 2rem 1.75rem; border: 1px solid rgba(245,240,232,0.08); border-top: 3px solid var(--terra); }
+  .next-step-num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 900; color: var(--terra); opacity: 0.35; line-height: 1; margin-bottom: 1rem; }
+  .next-step h3 { font-size: 1rem; font-weight: 500; color: var(--cream); margin-bottom: 0.5rem; }
+  .next-step p { font-size: 0.875rem; color: rgba(245,240,232,0.55); line-height: 1.65; }
+
+  /* NOT SURE YET */
+  .not-sure { background: var(--sand); padding: 4rem 2rem; }
+  .not-sure-inner { max-width: 680px; margin: 0 auto; text-align: center; }
+  .not-sure h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; color: var(--brown); margin-bottom: 1rem; }
+  .not-sure p { color: var(--brown-light); font-size: 1.0625rem; line-height: 1.8; margin-bottom: 2rem; }
+  .explore-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; }
+  .explore-link { background: var(--cream); color: var(--brown); padding: 0.625rem 1.25rem; text-decoration: none; font-size: 0.875rem; font-weight: 500; border-radius: 2px; border: 1px solid rgba(44,26,14,0.12); transition: background 0.2s, border-color 0.2s; }
+  .explore-link:hover { background: var(--brown); color: var(--cream); border-color: var(--brown); }
+
+  footer { background: #1a0e06; padding: 3rem 2rem; }
+  .footer-inner { max-width: 900px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 2rem; }
+  .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 900; color: var(--terra); }
+  .footer-logo sup { color: var(--gold); font-size: 0.65em; }
+  .footer-tagline { font-size: 0.8125rem; color: rgba(245,240,232,0.4); margin-top: 0.35rem; font-style: italic; }
+  .footer-links { display: flex; gap: 1.5rem; list-style: none; flex-wrap: wrap; }
+  .footer-links a { color: rgba(245,240,232,0.45); font-size: 0.8125rem; text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--terra); }
+  .footer-bottom { max-width: 900px; margin: 2rem auto 0; padding-top: 1.5rem; border-top: 1px solid rgba(245,240,232,0.08); font-size: 0.75rem; color: rgba(245,240,232,0.25); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; }
+
+  @media (max-width: 768px) {
+    .next-steps { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 640px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">925<sup>+</sup></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="community.html">Community</a></li>
+    <li><a href="futures.html">925+ Futures</a></li>
+    <li><a href="health.html">925+ Health</a></li>
+    <li><a href="visibility.html">925+ Visibility</a></li>
+    <li><a href="register.html" class="nav-cta active">Join Us</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html" onclick="closeMenu()">Home</a>
+  <a href="about.html" onclick="closeMenu()">About</a>
+  <a href="community.html" onclick="closeMenu()">Community</a>
+  <a href="futures.html" onclick="closeMenu()">925+ Futures</a>
+  <a href="health.html" onclick="closeMenu()">925+ Health</a>
+  <a href="visibility.html" onclick="closeMenu()">925+ Visibility</a>
+  <a href="funding.html" onclick="closeMenu()">925+ Funding</a>
+  <a href="register.html" class="mobile-cta" onclick="closeMenu()">Join Us</a>
+</div>
+
+<section class="hero">
+  <div class="hero-inner">
+    <span class="eyebrow">Join 925+</span>
+    <h1>This Is Where <em>It Starts.</em></h1>
+    <p>Fill in the form below and you will be added to the 925+ community. No gatekeeping. No fees. Just professionals who chose more.</p>
+  </div>
+</section>
+
+<section class="form-section">
+  <div class="form-wrap">
+    <p class="form-intro">Tell us a little about yourself so we can connect you to the right chapter and keep you in the loop on everything happening in the community.</p>
+
+    <!-- ZOHO FORM EMBED — Developer: replace this placeholder with the Zoho Form embed code -->
+    <div class="zoho-placeholder">
+      <div class="placeholder-icon">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z"/></svg>
+      </div>
+      <h3>Registration Form</h3>
+      <p>This is where the Zoho Form will be embedded. The form captures name, email, profession, career stage, chapter interests, vertical interests, and how you heard about 925+.</p>
+      <span class="dev-note">Developer: paste Zoho Form embed code here</span>
+    </div>
+
+    <p class="form-note">Your information is kept private and will only be used to connect you to the 925+ community. We do not sell or share your data. Questions? Reach us at 925plus@k-steps.com</p>
+  </div>
+</section>
+
+<section class="next">
+  <div class="next-inner">
+    <span class="section-label">What Happens After You Register</span>
+    <h2>Here Is What to Expect.</h2>
+    <div class="next-steps">
+      <div class="next-step">
+        <div class="next-step-num">01</div>
+        <h3>Check your email and WhatsApp</h3>
+        <p>You will receive a confirmation with the link to the main 925+ community WhatsApp group shortly after you submit.</p>
+      </div>
+      <div class="next-step">
+        <div class="next-step-num">02</div>
+        <h3>Join the main community group</h3>
+        <p>Everyone starts in the main 925+ group. This is where announcements, webinars, and community-wide conversations happen.</p>
+      </div>
+      <div class="next-step">
+        <div class="next-step-num">03</div>
+        <h3>Get invited to your chapter</h3>
+        <p>As industry chapters open, members who selected that interest will be personally invited into their chapter group.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="not-sure">
+  <div class="not-sure-inner">
+    <h2>Not Sure Yet?</h2>
+    <p>That is okay. Have a look at what is happening inside the community before you decide.</p>
+    <div class="explore-links">
+      <a href="community.html" class="explore-link">Read about our Chapters</a>
+      <a href="futures.html" class="explore-link">See what 925+ Futures is doing</a>
+      <a href="health.html" class="explore-link">Explore 925+ Health</a>
+      <a href="visibility.html" class="explore-link">Learn about 925+ Visibility</a>
+      <a href="funding.html" class="explore-link">Discover 925+ Funding</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">925<sup>+</sup></div>
+      <div class="footer-tagline">More than the job. More than enough.</div>
+    </div>
+    <ul class="footer-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="community.html">Community</a></li>
+      <li><a href="futures.html">925+ Futures</a></li>
+      <li><a href="health.html">925+ Health</a></li>
+      <li><a href="visibility.html">925+ Visibility</a></li>
+      <li><a href="funding.html">925+ Funding</a></li>
+      <li><a href="register.html">Join Us</a></li>
+    </ul>
+  </div>
+  <div class="footer-bottom">
+    <span>925+ | Powered by K-STEPS Technologies</span>
+    <span>925plus.k-steps.com</span>
+  </div>
+</footer>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+  });
+  function closeMenu() {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,796 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>925+ Health | 925+</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --brown: #2c1a0e;
+        --terra: #c9742a;
+        --cream: #f5f0e8;
+        --sand: #e8d5b0;
+        --gold: #c9a96e;
+        --burnt: #a85520;
+        --brown-light: rgba(44, 26, 14, 0.75);
+      }
+
+      body {
+        font-family: "DM Sans", sans-serif;
+        background: var(--cream);
+        color: var(--brown);
+        line-height: 1.65;
+        font-size: 16px;
+      }
+
+      nav {
+        background: var(--brown);
+        padding: 1rem 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+      .nav-logo {
+        font-family: "Playfair Display", serif;
+        font-size: 1.6rem;
+        font-weight: 900;
+        color: var(--terra);
+        letter-spacing: -0.02em;
+        text-decoration: none;
+      }
+      .nav-logo sup {
+        font-size: 0.7em;
+        color: var(--gold);
+        vertical-align: super;
+      }
+      .nav-links {
+        display: flex;
+        gap: 1.5rem;
+        list-style: none;
+      }
+      .nav-links a {
+        color: rgba(245, 240, 232, 0.7);
+        text-decoration: none;
+        font-size: 0.875rem;
+        font-weight: 500;
+        transition: color 0.2s;
+      }
+      .nav-links a:hover,
+      .nav-links a.active {
+        color: var(--terra);
+      }
+      .nav-cta {
+        background: var(--terra);
+        color: var(--cream) !important;
+        padding: 0.5rem 1.25rem;
+        border-radius: 2px;
+      }
+      .nav-cta:hover {
+        background: var(--burnt) !important;
+      }
+
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 4px;
+        z-index: 200;
+      }
+      .hamburger span {
+        display: block;
+        width: 24px;
+        height: 2px;
+        background: var(--cream);
+        border-radius: 2px;
+        transition:
+          transform 0.3s,
+          opacity 0.3s;
+        transform-origin: center;
+      }
+      .hamburger.open span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+      .hamburger.open span:nth-child(2) {
+        opacity: 0;
+      }
+      .hamburger.open span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+      .mobile-menu {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--brown);
+        z-index: 150;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .mobile-menu.open {
+        display: flex;
+      }
+      .mobile-menu a {
+        color: rgba(245, 240, 232, 0.75);
+        text-decoration: none;
+        font-size: 1.25rem;
+        font-weight: 500;
+        padding: 1.1rem 2rem;
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid rgba(245, 240, 232, 0.06);
+        transition: color 0.2s;
+      }
+      .mobile-menu a:hover {
+        color: var(--terra);
+      }
+      .mobile-menu a.mobile-cta {
+        margin-top: 1.5rem;
+        background: var(--terra);
+        color: var(--cream);
+        border-radius: 2px;
+        width: auto;
+        padding: 0.875rem 2.5rem;
+        border: none;
+      }
+
+      .hero {
+        background: var(--brown);
+        padding: 6rem 2rem 5rem;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: repeating-linear-gradient(
+          45deg,
+          transparent,
+          transparent 60px,
+          rgba(201, 116, 42, 0.03) 60px,
+          rgba(201, 116, 42, 0.03) 61px
+        );
+        pointer-events: none;
+      }
+      .hero-inner {
+        max-width: 920px;
+        margin: 0 auto;
+        position: relative;
+      }
+      .eyebrow {
+        display: inline-block;
+        font-size: 0.75rem;
+        font-weight: 500;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 1.5rem;
+        border-left: 2px solid var(--terra);
+        padding-left: 0.75rem;
+      }
+      .hero h1 {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(2.2rem, 5vw, 3.6rem);
+        font-weight: 900;
+        color: var(--cream);
+        line-height: 1.15;
+        margin-bottom: 1.5rem;
+      }
+      .hero h1 em {
+        font-style: italic;
+        color: var(--terra);
+      }
+      .hero p {
+        font-size: 1.125rem;
+        color: rgba(245, 240, 232, 0.72);
+        max-width: 560px;
+        line-height: 1.75;
+      }
+
+      section {
+        padding: 5rem 2rem;
+      }
+      .section-inner {
+        max-width: 900px;
+        margin: 0 auto;
+      }
+      .section-label {
+        font-size: 0.7rem;
+        font-weight: 500;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--terra);
+        margin-bottom: 1rem;
+        display: block;
+      }
+      h2 {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(1.8rem, 4vw, 2.6rem);
+        font-weight: 700;
+        line-height: 1.2;
+        color: var(--brown);
+        margin-bottom: 1.5rem;
+      }
+
+      /* VISION */
+      .vision {
+        background: var(--sand);
+        border-top: 3px solid var(--terra);
+      }
+      .vision-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+        margin-top: 2rem;
+      }
+      .vision p {
+        color: var(--brown-light);
+        font-size: 1.0625rem;
+        line-height: 1.85;
+        margin-bottom: 1.25rem;
+      }
+      .vision-statement {
+        background: var(--brown);
+        padding: 3rem 2.5rem;
+      }
+      .vision-statement p {
+        font-family: "Playfair Display", serif;
+        font-size: 1.3rem;
+        font-style: italic;
+        color: var(--cream);
+        line-height: 1.65;
+        margin: 0;
+      }
+      .vision-statement span {
+        display: block;
+        width: 40px;
+        height: 2px;
+        background: var(--terra);
+        margin-top: 1.5rem;
+      }
+
+      /* WHAT WE DO */
+      .what {
+        background: var(--cream);
+      }
+      .what > .section-inner > p {
+        color: var(--brown-light);
+        font-size: 1.0625rem;
+        line-height: 1.85;
+        max-width: 680px;
+        margin-bottom: 3rem;
+      }
+      .programme-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+      }
+      .programme-card {
+        background: var(--sand);
+        padding: 2rem 1.75rem;
+        border-top: 3px solid var(--terra);
+        transition: transform 0.2s;
+      }
+      .programme-card:hover {
+        transform: translateY(-3px);
+      }
+      .programme-card h3 {
+        font-family: "Playfair Display", serif;
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--brown);
+        margin-bottom: 0.75rem;
+      }
+      .programme-card p {
+        color: var(--brown-light);
+        font-size: 0.9375rem;
+        line-height: 1.7;
+      }
+
+      /* WHO BELONGS */
+      .who {
+        background: var(--brown);
+      }
+      .who h2 {
+        color: var(--cream);
+      }
+      .who .section-label {
+        color: var(--gold);
+      }
+      .who > .section-inner > p {
+        color: rgba(245, 240, 232, 0.7);
+        font-size: 1.0625rem;
+        line-height: 1.85;
+        max-width: 680px;
+        margin-bottom: 2.5rem;
+      }
+      .professionals-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+      }
+      .pro-tag {
+        background: rgba(245, 240, 232, 0.06);
+        border: 1px solid rgba(245, 240, 232, 0.1);
+        padding: 0.875rem 1.25rem;
+        font-size: 0.9rem;
+        color: rgba(245, 240, 232, 0.75);
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+      .pro-tag::before {
+        content: "";
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--terra);
+        flex-shrink: 0;
+      }
+
+      /* GET INVOLVED */
+      .get-involved {
+        background: var(--sand);
+      }
+      .involved-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        margin-top: 2.5rem;
+      }
+      .involved-card {
+        background: var(--cream);
+        padding: 2.5rem 2rem;
+        border-top: 3px solid var(--terra);
+      }
+      .involved-card h3 {
+        font-family: "Playfair Display", serif;
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--brown);
+        margin-bottom: 1rem;
+      }
+      .involved-card p {
+        color: var(--brown-light);
+        font-size: 0.9375rem;
+        line-height: 1.75;
+        margin-bottom: 1.5rem;
+      }
+      .btn-primary {
+        display: inline-block;
+        background: var(--terra);
+        color: var(--cream);
+        padding: 0.75rem 1.75rem;
+        font-weight: 500;
+        font-size: 0.875rem;
+        border-radius: 2px;
+        text-decoration: none;
+        transition: background 0.2s;
+      }
+      .btn-primary:hover {
+        background: var(--burnt);
+      }
+      .btn-outline-dark {
+        display: inline-block;
+        border: 1px solid rgba(44, 26, 14, 0.3);
+        color: var(--brown-light);
+        padding: 0.75rem 1.75rem;
+        font-weight: 500;
+        font-size: 0.875rem;
+        border-radius: 2px;
+        text-decoration: none;
+        transition:
+          border-color 0.2s,
+          color 0.2s;
+      }
+      .btn-outline-dark:hover {
+        border-color: var(--terra);
+        color: var(--terra);
+      }
+
+      /* CLOSING */
+      .closing {
+        background: var(--cream);
+        text-align: center;
+        padding: 5rem 2rem;
+      }
+      .closing h2 {
+        max-width: 600px;
+        margin: 0 auto 1.5rem;
+      }
+      .closing p {
+        color: var(--brown-light);
+        font-size: 1.0625rem;
+        max-width: 540px;
+        margin: 0 auto;
+        line-height: 1.8;
+      }
+
+      /* CTA */
+      .final-cta {
+        background: var(--terra);
+        text-align: center;
+        padding: 5rem 2rem;
+      }
+      .final-cta h2 {
+        color: var(--cream);
+        font-size: clamp(2rem, 5vw, 3rem);
+        margin-bottom: 1rem;
+      }
+      .final-cta p {
+        color: rgba(245, 240, 232, 0.85);
+        font-size: 1.0625rem;
+        max-width: 460px;
+        margin: 0 auto 2rem;
+        line-height: 1.75;
+      }
+      .btn-cream {
+        display: inline-block;
+        background: var(--cream);
+        color: var(--brown);
+        padding: 0.875rem 2.5rem;
+        font-weight: 500;
+        font-size: 0.9375rem;
+        border-radius: 2px;
+        text-decoration: none;
+        transition:
+          background 0.2s,
+          transform 0.15s;
+      }
+      .btn-cream:hover {
+        background: var(--sand);
+        transform: translateY(-1px);
+      }
+      .fine-print {
+        color: rgba(245, 240, 232, 0.6);
+        font-size: 0.8125rem;
+        margin-top: 1rem;
+      }
+
+      footer {
+        background: #1a0e06;
+        padding: 3rem 2rem;
+      }
+      .footer-inner {
+        max-width: 900px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 2rem;
+      }
+      .footer-logo {
+        font-family: "Playfair Display", serif;
+        font-size: 1.5rem;
+        font-weight: 900;
+        color: var(--terra);
+      }
+      .footer-logo sup {
+        color: var(--gold);
+        font-size: 0.65em;
+      }
+      .footer-tagline {
+        font-size: 0.8125rem;
+        color: rgba(245, 240, 232, 0.4);
+        margin-top: 0.35rem;
+        font-style: italic;
+      }
+      .footer-links {
+        display: flex;
+        gap: 1.5rem;
+        list-style: none;
+        flex-wrap: wrap;
+      }
+      .footer-links a {
+        color: rgba(245, 240, 232, 0.45);
+        font-size: 0.8125rem;
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      .footer-links a:hover {
+        color: var(--terra);
+      }
+      .footer-bottom {
+        max-width: 900px;
+        margin: 2rem auto 0;
+        padding-top: 1.5rem;
+        border-top: 1px solid rgba(245, 240, 232, 0.08);
+        font-size: 0.75rem;
+        color: rgba(245, 240, 232, 0.25);
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      @media (max-width: 768px) {
+        .vision-grid {
+          grid-template-columns: 1fr;
+        }
+        .programme-grid {
+          grid-template-columns: 1fr;
+        }
+        .professionals-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .involved-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .nav-links {
+          display: none;
+        }
+        .hamburger {
+          display: flex;
+        }
+        .professionals-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="index.html" class="nav-logo">925<sup>+</sup></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="community.html">Community</a></li>
+        <li><a href="futures.html">925+ Futures</a></li>
+        <li><a href="health.html" class="active">925+ Health</a></li>
+        <li><a href="visibility.html">925+ Visibility</a></li>
+        <li><a href="register.html" class="nav-cta">Join Us</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="index.html" onclick="closeMenu()">Home</a>
+      <a href="about.html" onclick="closeMenu()">About</a>
+      <a href="community.html" onclick="closeMenu()">Community</a>
+      <a href="futures.html" onclick="closeMenu()">925+ Futures</a>
+      <a href="health.html" onclick="closeMenu()">925+ Health</a>
+      <a href="visibility.html" onclick="closeMenu()">925+ Visibility</a>
+      <a href="funding.html" onclick="closeMenu()">925+ Funding</a>
+      <a href="register.html" class="mobile-cta" onclick="closeMenu()"
+        >Join Us</a
+      >
+    </div>
+
+    <section class="hero">
+      <div class="hero-inner">
+        <span class="eyebrow">925+ Health</span>
+        <h1>
+          Healthcare Professionals Who Show Up <em>Beyond the Clinic.</em>
+        </h1>
+        <p>
+          Inside 925+ Health, medical professionals are taking their expertise
+          into communities that need it most.
+        </p>
+      </div>
+    </section>
+
+    <section class="vision">
+      <div class="section-inner">
+        <span class="section-label">Beyond the Consulting Room</span>
+        <h2>Your Training Was Never Meant to Stay Inside Four Walls.</h2>
+        <div class="vision-grid">
+          <div>
+            <p>
+              Nigeria has some of the most skilled healthcare professionals in
+              the world. Doctors, nurses, pharmacists, medical laboratory
+              scientists, dentists, mental health practitioners, and more. Many
+              of them trained hard, built strong careers, and show up every day
+              in demanding conditions.
+            </p>
+            <p>
+              But the impact of a healthcare professional does not have to stop
+              at the clinic door.
+            </p>
+            <p>
+              925+ Health is a vertical within the 925+ community where
+              healthcare professionals come together to organise outreaches,
+              screenings, health talks, and community interventions that take
+              their expertise beyond their institutions and into the hands of
+              people who would otherwise never access it.
+            </p>
+          </div>
+          <div class="vision-statement">
+            <p>
+              "The impact of a healthcare professional does not have to stop at
+              the clinic door."
+            </p>
+            <span></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="what">
+      <div class="section-inner">
+        <span class="section-label">What 925+ Health Does</span>
+        <h2>Taking Expertise to Where It Is Needed Most.</h2>
+        <p>
+          Members of the 925+ Health chapter organise and participate in
+          community health programmes across Nigeria. The format is flexible and
+          driven by the professionals in the network.
+        </p>
+        <div class="programme-grid">
+          <div class="programme-card">
+            <h3>Health Outreaches</h3>
+            <p>
+              Community visits where 925+ Health members offer basic screenings,
+              consultations, and health education to underserved populations.
+              Free. Accessible. Professional.
+            </p>
+          </div>
+          <div class="programme-card">
+            <h3>Health Talks</h3>
+            <p>
+              Sessions in schools, churches, community centres, and workplaces
+              where healthcare professionals speak on topics that affect
+              everyday Nigerians. Mental health. Maternal health. Preventive
+              care. Chronic disease management.
+            </p>
+          </div>
+          <div class="programme-card">
+            <h3>Professional Panels</h3>
+            <p>
+              Conversations within the 925+ community where health professionals
+              share knowledge across disciplines and help each other navigate
+              the intersection of clinical work and career building.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="who">
+      <div class="section-inner">
+        <span class="section-label">Who Belongs in 925+ Health</span>
+        <h2>If You Work in Healthcare, You Belong Here.</h2>
+        <p>
+          If you work in any area of healthcare and you want to do more than
+          your job description allows, 925+ Health is for you. You do not need
+          to have it all figured out. You just need to want to show up.
+        </p>
+        <div class="professionals-grid">
+          <div class="pro-tag">Medical Doctors</div>
+          <div class="pro-tag">Nurses and Midwives</div>
+          <div class="pro-tag">Pharmacists</div>
+          <div class="pro-tag">Dentists</div>
+          <div class="pro-tag">Medical Laboratory Scientists</div>
+          <div class="pro-tag">Physiotherapists</div>
+          <div class="pro-tag">Mental Health Professionals</div>
+          <div class="pro-tag">Public Health Practitioners</div>
+          <div class="pro-tag">Community Health Workers</div>
+          <div class="pro-tag">Healthcare Students</div>
+          <div class="pro-tag">Early Career Health Professionals</div>
+          <div class="pro-tag">Health Researchers</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="get-involved">
+      <div class="section-inner">
+        <span class="section-label">Get Involved</span>
+        <h2>Two Ways to Be Part of 925+ Health.</h2>
+        <div class="involved-grid">
+          <div class="involved-card">
+            <h3>Join the Chapter</h3>
+            <p>
+              Register for 925+ and select 925+ Health as your chapter. You will
+              be connected with other healthcare professionals in the network
+              and kept in the loop on upcoming outreaches and events.
+            </p>
+            <a href="register.html" class="btn-primary">Join 925+ Health</a>
+          </div>
+          <div class="involved-card">
+            <h3>Partner With Us</h3>
+            <p>
+              If you represent a hospital, clinic, health NGO, or organisation
+              that wants to collaborate on outreaches or health programmes, we
+              want to hear from you.
+            </p>
+            <a href="contact.html" class="btn-outline-dark">Get in Touch</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing">
+      <div class="section-inner">
+        <span class="section-label">A Closing Word</span>
+        <h2>You Trained for This. Now Use It Further.</h2>
+        <p>
+          Your degree, your years of training, your clinical experience. They
+          were never meant to stay inside four walls. 925+ Health is how you
+          take them further.
+        </p>
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <h2>Ready to Show Up Beyond the Clinic?</h2>
+      <p>
+        Join 925+ and become part of a community of healthcare professionals
+        building impact beyond the consulting room.
+      </p>
+      <a href="register.html" class="btn-cream">Join 925+ Health</a>
+      <p class="fine-print">
+        Free to join. Open to all healthcare professionals.
+      </p>
+    </section>
+
+    <footer>
+      <div class="footer-inner">
+        <div>
+          <div class="footer-logo">925<sup>+</sup></div>
+          <div class="footer-tagline">More than the job. More than enough.</div>
+        </div>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="community.html">Community</a></li>
+          <li><a href="futures.html">925+ Futures</a></li>
+          <li><a href="health.html">925+ Health</a></li>
+          <li><a href="visibility.html">925+ Visibility</a></li>
+          <li><a href="funding.html">925+ Funding</a></li>
+          <li><a href="register.html">Join Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-bottom">
+        <span>925+ | Powered by K-STEPS Technologies</span>
+        <span>925plus.k-steps.com</span>
+      </div>
+    </footer>
+
+    <script>
+      const hamburger = document.getElementById("hamburger");
+      const mobileMenu = document.getElementById("mobileMenu");
+      hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("open");
+        mobileMenu.classList.toggle("open");
+        document.body.style.overflow = mobileMenu.classList.contains("open")
+          ? "hidden"
+          : "";
+      });
+      function closeMenu() {
+        hamburger.classList.remove("open");
+        mobileMenu.classList.remove("open");
+        document.body.style.overflow = "";
+      }
+    </script>
+  </body>
+</html>

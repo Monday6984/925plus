@@ -1,0 +1,915 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>925+ Visibility | 925+</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --brown: #2c1a0e;
+        --terra: #c9742a;
+        --cream: #f5f0e8;
+        --sand: #e8d5b0;
+        --gold: #c9a96e;
+        --burnt: #a85520;
+        --brown-light: rgba(44, 26, 14, 0.75);
+      }
+
+      body {
+        font-family: "DM Sans", sans-serif;
+        background: var(--cream);
+        color: var(--brown);
+        line-height: 1.65;
+        font-size: 16px;
+      }
+
+      nav {
+        background: var(--brown);
+        padding: 1rem 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+      .nav-logo {
+        font-family: "Playfair Display", serif;
+        font-size: 1.6rem;
+        font-weight: 900;
+        color: var(--terra);
+        letter-spacing: -0.02em;
+        text-decoration: none;
+      }
+      .nav-logo sup {
+        font-size: 0.7em;
+        color: var(--gold);
+        vertical-align: super;
+      }
+      .nav-links {
+        display: flex;
+        gap: 1.5rem;
+        list-style: none;
+      }
+      .nav-links a {
+        color: rgba(245, 240, 232, 0.7);
+        text-decoration: none;
+        font-size: 0.875rem;
+        font-weight: 500;
+        transition: color 0.2s;
+      }
+      .nav-links a:hover,
+      .nav-links a.active {
+        color: var(--terra);
+      }
+      .nav-cta {
+        background: var(--terra);
+        color: var(--cream) !important;
+        padding: 0.5rem 1.25rem;
+        border-radius: 2px;
+      }
+      .nav-cta:hover {
+        background: var(--burnt) !important;
+      }
+
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 4px;
+        z-index: 200;
+      }
+      .hamburger span {
+        display: block;
+        width: 24px;
+        height: 2px;
+        background: var(--cream);
+        border-radius: 2px;
+        transition:
+          transform 0.3s,
+          opacity 0.3s;
+        transform-origin: center;
+      }
+      .hamburger.open span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+      .hamburger.open span:nth-child(2) {
+        opacity: 0;
+      }
+      .hamburger.open span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+      .mobile-menu {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--brown);
+        z-index: 150;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .mobile-menu.open {
+        display: flex;
+      }
+      .mobile-menu a {
+        color: rgba(245, 240, 232, 0.75);
+        text-decoration: none;
+        font-size: 1.25rem;
+        font-weight: 500;
+        padding: 1.1rem 2rem;
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid rgba(245, 240, 232, 0.06);
+        transition: color 0.2s;
+      }
+      .mobile-menu a:hover {
+        color: var(--terra);
+      }
+      .mobile-menu a.mobile-cta {
+        margin-top: 1.5rem;
+        background: var(--terra);
+        color: var(--cream);
+        border-radius: 2px;
+        width: auto;
+        padding: 0.875rem 2.5rem;
+        border: none;
+      }
+
+      .hero {
+        background: var(--brown);
+        padding: 6rem 2rem 5rem;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: repeating-linear-gradient(
+          45deg,
+          transparent,
+          transparent 60px,
+          rgba(201, 116, 42, 0.03) 60px,
+          rgba(201, 116, 42, 0.03) 61px
+        );
+        pointer-events: none;
+      }
+      .hero-inner {
+        max-width: 920px;
+        margin: 0 auto;
+        position: relative;
+      }
+      .eyebrow {
+        display: inline-block;
+        font-size: 0.75rem;
+        font-weight: 500;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 1.5rem;
+        border-left: 2px solid var(--terra);
+        padding-left: 0.75rem;
+      }
+      .hero h1 {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(2.2rem, 5vw, 3.6rem);
+        font-weight: 900;
+        color: var(--cream);
+        line-height: 1.15;
+        margin-bottom: 1.5rem;
+      }
+      .hero h1 em {
+        font-style: italic;
+        color: var(--terra);
+      }
+      .hero p {
+        font-size: 1.125rem;
+        color: rgba(245, 240, 232, 0.72);
+        max-width: 560px;
+        line-height: 1.75;
+      }
+
+      section {
+        padding: 5rem 2rem;
+      }
+      .section-inner {
+        max-width: 900px;
+        margin: 0 auto;
+      }
+      .section-label {
+        font-size: 0.7rem;
+        font-weight: 500;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--terra);
+        margin-bottom: 1rem;
+        display: block;
+      }
+      h2 {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(1.8rem, 4vw, 2.6rem);
+        font-weight: 700;
+        line-height: 1.2;
+        color: var(--brown);
+        margin-bottom: 1.5rem;
+      }
+
+      /* PROBLEM */
+      .problem {
+        background: var(--sand);
+        border-top: 3px solid var(--terra);
+      }
+      .problem-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+        margin-top: 2rem;
+      }
+      .problem p {
+        color: var(--brown-light);
+        font-size: 1.0625rem;
+        line-height: 1.85;
+        margin-bottom: 1.25rem;
+      }
+
+      .gap-visual {
+        display: flex;
+        flex-direction: column;
+        gap: 1px;
+      }
+      .gap-row {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem 1.25rem;
+        background: var(--cream);
+      }
+      .gap-row.faded {
+        opacity: 0.35;
+      }
+      .gap-row.active {
+        background: var(--brown);
+      }
+      .gap-icon {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--terra);
+        flex-shrink: 0;
+      }
+      .gap-row.faded .gap-icon {
+        background: rgba(44, 26, 14, 0.3);
+      }
+      .gap-row.active .gap-icon {
+        background: var(--gold);
+      }
+      .gap-text {
+        font-size: 0.9rem;
+        color: var(--brown-light);
+        line-height: 1.5;
+      }
+      .gap-row.active .gap-text {
+        color: rgba(245, 240, 232, 0.75);
+      }
+      .gap-row.active .gap-label {
+        color: var(--terra);
+      }
+      .gap-label {
+        font-size: 0.7rem;
+        font-weight: 500;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--burnt);
+        display: block;
+        margin-bottom: 0.2rem;
+      }
+
+      /* WHAT WE OFFER */
+      .offer {
+        background: var(--brown);
+      }
+      .offer h2 {
+        color: var(--cream);
+      }
+      .offer .section-label {
+        color: var(--gold);
+      }
+      .offer-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        margin-top: 2.5rem;
+      }
+      .offer-card {
+        padding: 2rem;
+        border: 1px solid rgba(245, 240, 232, 0.08);
+        border-top: 3px solid var(--terra);
+      }
+      .offer-card h3 {
+        font-family: "Playfair Display", serif;
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--cream);
+        margin-bottom: 0.75rem;
+      }
+      .offer-card p {
+        color: rgba(245, 240, 232, 0.65);
+        font-size: 0.9375rem;
+        line-height: 1.75;
+      }
+
+      /* KSTEPS */
+      .ksteps-section {
+        background: var(--sand);
+      }
+      .ksteps-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+        margin-top: 2rem;
+      }
+      .ksteps-section p {
+        color: var(--brown-light);
+        font-size: 1.0625rem;
+        line-height: 1.85;
+        margin-bottom: 1.25rem;
+      }
+      .ksteps-box {
+        background: var(--brown);
+        padding: 2.5rem;
+      }
+      .ksteps-box .ksteps-name {
+        font-family: "Playfair Display", serif;
+        font-size: 1.5rem;
+        font-weight: 900;
+        color: var(--terra);
+        margin-bottom: 0.5rem;
+      }
+      .ksteps-box .ksteps-tagline {
+        font-size: 0.8rem;
+        color: var(--gold);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: 1.5rem;
+        display: block;
+      }
+      .ksteps-feature {
+        display: flex;
+        gap: 0.75rem;
+        align-items: flex-start;
+        margin-bottom: 1rem;
+      }
+      .ksteps-feature:last-child {
+        margin-bottom: 0;
+      }
+      .ksteps-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--terra);
+        flex-shrink: 0;
+        margin-top: 7px;
+      }
+      .ksteps-feature p {
+        color: rgba(245, 240, 232, 0.65);
+        font-size: 0.875rem;
+        line-height: 1.65;
+        margin: 0;
+      }
+      .ksteps-link {
+        display: inline-block;
+        margin-top: 1.5rem;
+        color: var(--gold);
+        font-size: 0.875rem;
+        font-weight: 500;
+        text-decoration: none;
+        border-bottom: 1px solid rgba(201, 169, 110, 0.4);
+        padding-bottom: 2px;
+      }
+      .ksteps-link:hover {
+        color: var(--terra);
+        border-color: var(--terra);
+      }
+
+      /* WHO IT IS FOR */
+      .who {
+        background: var(--cream);
+      }
+      .who p {
+        color: var(--brown-light);
+        font-size: 1.0625rem;
+        line-height: 1.85;
+        max-width: 680px;
+        margin-bottom: 2rem;
+      }
+      .signs-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        max-width: 680px;
+      }
+      .sign-item {
+        display: flex;
+        gap: 1.25rem;
+        align-items: flex-start;
+        padding: 1.25rem 0;
+        border-bottom: 1px solid rgba(44, 26, 14, 0.08);
+      }
+      .sign-item:last-child {
+        border-bottom: none;
+      }
+      .sign-check {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: var(--terra);
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 2px;
+      }
+      .sign-check::after {
+        content: "";
+        width: 8px;
+        height: 5px;
+        border-left: 2px solid var(--cream);
+        border-bottom: 2px solid var(--cream);
+        transform: rotate(-45deg) translateY(-1px);
+        display: block;
+      }
+      .sign-item p {
+        color: var(--brown-light);
+        font-size: 0.9375rem;
+        line-height: 1.65;
+        margin: 0;
+      }
+
+      /* CLOSING */
+      .closing {
+        background: var(--brown);
+        text-align: center;
+        padding: 5rem 2rem;
+      }
+      .closing h2 {
+        color: var(--cream);
+        max-width: 600px;
+        margin: 0 auto 1.5rem;
+      }
+      .closing p {
+        color: rgba(245, 240, 232, 0.65);
+        font-size: 1.0625rem;
+        max-width: 520px;
+        margin: 0 auto;
+        line-height: 1.8;
+      }
+
+      /* CTA */
+      .final-cta {
+        background: var(--terra);
+        text-align: center;
+        padding: 5rem 2rem;
+      }
+      .final-cta h2 {
+        color: var(--cream);
+        font-size: clamp(2rem, 5vw, 3rem);
+        margin-bottom: 1rem;
+      }
+      .final-cta p {
+        color: rgba(245, 240, 232, 0.85);
+        font-size: 1.0625rem;
+        max-width: 460px;
+        margin: 0 auto 2rem;
+        line-height: 1.75;
+      }
+      .btn-cream {
+        display: inline-block;
+        background: var(--cream);
+        color: var(--brown);
+        padding: 0.875rem 2.5rem;
+        font-weight: 500;
+        font-size: 0.9375rem;
+        border-radius: 2px;
+        text-decoration: none;
+        transition:
+          background 0.2s,
+          transform 0.15s;
+      }
+      .btn-cream:hover {
+        background: var(--sand);
+        transform: translateY(-1px);
+      }
+      .fine-print {
+        color: rgba(245, 240, 232, 0.6);
+        font-size: 0.8125rem;
+        margin-top: 1rem;
+      }
+
+      footer {
+        background: #1a0e06;
+        padding: 3rem 2rem;
+      }
+      .footer-inner {
+        max-width: 900px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 2rem;
+      }
+      .footer-logo {
+        font-family: "Playfair Display", serif;
+        font-size: 1.5rem;
+        font-weight: 900;
+        color: var(--terra);
+      }
+      .footer-logo sup {
+        color: var(--gold);
+        font-size: 0.65em;
+      }
+      .footer-tagline {
+        font-size: 0.8125rem;
+        color: rgba(245, 240, 232, 0.4);
+        margin-top: 0.35rem;
+        font-style: italic;
+      }
+      .footer-links {
+        display: flex;
+        gap: 1.5rem;
+        list-style: none;
+        flex-wrap: wrap;
+      }
+      .footer-links a {
+        color: rgba(245, 240, 232, 0.45);
+        font-size: 0.8125rem;
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      .footer-links a:hover {
+        color: var(--terra);
+      }
+      .footer-bottom {
+        max-width: 900px;
+        margin: 2rem auto 0;
+        padding-top: 1.5rem;
+        border-top: 1px solid rgba(245, 240, 232, 0.08);
+        font-size: 0.75rem;
+        color: rgba(245, 240, 232, 0.25);
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      @media (max-width: 768px) {
+        .problem-grid,
+        .ksteps-grid {
+          grid-template-columns: 1fr;
+        }
+        .offer-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .nav-links {
+          display: none;
+        }
+        .hamburger {
+          display: flex;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="index.html" class="nav-logo">925<sup>+</sup></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="community.html">Community</a></li>
+        <li><a href="futures.html">925+ Futures</a></li>
+        <li><a href="health.html">925+ Health</a></li>
+        <li><a href="visibility.html" class="active">925+ Visibility</a></li>
+        <li><a href="register.html" class="nav-cta">Join Us</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="index.html" onclick="closeMenu()">Home</a>
+      <a href="about.html" onclick="closeMenu()">About</a>
+      <a href="community.html" onclick="closeMenu()">Community</a>
+      <a href="futures.html" onclick="closeMenu()">925+ Futures</a>
+      <a href="health.html" onclick="closeMenu()">925+ Health</a>
+      <a href="visibility.html" onclick="closeMenu()">925+ Visibility</a>
+      <a href="funding.html" onclick="closeMenu()">925+ Funding</a>
+      <a href="register.html" class="mobile-cta" onclick="closeMenu()"
+        >Join Us</a
+      >
+    </div>
+
+    <section class="hero">
+      <div class="hero-inner">
+        <span class="eyebrow">925+ Visibility</span>
+        <h1>You Have Done the Work. <em>Now Let the World See It.</em></h1>
+        <p>
+          925+ Visibility gives professionals the tools, frameworks, and support
+          to show up consistently and professionally online, without the
+          guesswork.
+        </p>
+      </div>
+    </section>
+
+    <section class="problem">
+      <div class="section-inner">
+        <span class="section-label">The Visibility Gap</span>
+        <h2>
+          You Are Good at What You Do. But Outside That Room, Nobody Knows Your
+          Name.
+        </h2>
+        <div class="problem-grid">
+          <div>
+            <p>
+              You are qualified. Your colleagues know it. Your clients know it.
+              Your manager knows it. But outside that organisation, outside that
+              circle, nobody knows your name.
+            </p>
+            <p>
+              And in a world where opportunities increasingly go to the people
+              who are visible, that gap matters more than it ever has.
+            </p>
+            <p>
+              It is not a talent problem. It is not a confidence problem. For
+              most professionals, it is a system problem. Nobody taught you how
+              to talk about your work online. Nobody showed you how to turn what
+              you know into content that positions you. Nobody gave you a
+              framework that fits into a demanding schedule.
+            </p>
+            <p>That is what 925+ Visibility is for.</p>
+          </div>
+          <div class="gap-visual">
+            <div class="gap-row faded">
+              <div class="gap-icon"></div>
+              <div class="gap-text">
+                <span class="gap-label">The reality</span>Highly skilled. Rarely
+                seen outside their immediate circle.
+              </div>
+            </div>
+            <div class="gap-row faded">
+              <div class="gap-icon"></div>
+              <div class="gap-text">
+                <span class="gap-label">The problem</span>Opportunities go to
+                the people who are visible, not necessarily the most qualified.
+              </div>
+            </div>
+            <div class="gap-row active">
+              <div class="gap-icon"></div>
+              <div class="gap-text">
+                <span class="gap-label">The solution</span>925+ Visibility. A
+                system for showing up consistently, professionally, and
+                authentically online.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="offer">
+      <div class="section-inner">
+        <span class="section-label">What 925+ Visibility Gives You</span>
+        <h2>Everything You Need to Show Up and Be Found.</h2>
+        <div class="offer-grid">
+          <div class="offer-card">
+            <h3>Content Frameworks</h3>
+            <p>
+              Simple, repeatable structures for creating professional content
+              online. You do not need to be a writer or a content creator. You
+              need a framework that works for someone with a full-time job and a
+              lot of expertise.
+            </p>
+          </div>
+          <div class="offer-card">
+            <h3>LinkedIn Strategy</h3>
+            <p>
+              Guidance on building a LinkedIn presence that reflects who you are
+              and attracts the opportunities you are looking for. Profile
+              optimisation, content strategy, and consistency systems.
+            </p>
+          </div>
+          <div class="offer-card">
+            <h3>Community Accountability</h3>
+            <p>
+              A group of professionals in your field who are building their
+              visibility alongside you. Shared goals, shared progress, shared
+              wins. You do not have to figure it out alone.
+            </p>
+          </div>
+          <div class="offer-card">
+            <h3>K-STEPS Platform Access</h3>
+            <p>
+              An AI platform that converts your expertise, your voice notes,
+              your documents, and your CV into consistent social media content.
+              It does the heavy lifting so you can stay consistent without
+              burning out.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ksteps-section">
+      <div class="section-inner">
+        <span class="section-label">Powered By K-STEPS Technologies</span>
+        <h2>The Tool Behind the Visibility.</h2>
+        <div class="ksteps-grid">
+          <div>
+            <p>
+              K-STEPS is an AI-powered content platform built specifically for
+              African professionals. It takes what you already know and turns it
+              into the kind of content that builds your reputation online.
+            </p>
+            <p>
+              925+ members get access to K-STEPS as part of their visibility
+              journey. Because the community gives you the why, and K-STEPS
+              gives you the how.
+            </p>
+          </div>
+          <div class="ksteps-box">
+            <div class="ksteps-name">K-STEPS</div>
+            <span class="ksteps-tagline"
+              >AI-Powered Content for African Professionals</span
+            >
+            <div class="ksteps-feature">
+              <div class="ksteps-dot"></div>
+              <p>
+                Upload your CV and get LinkedIn content that positions you
+                professionally.
+              </p>
+            </div>
+            <div class="ksteps-feature">
+              <div class="ksteps-dot"></div>
+              <p>
+                Record a voice note and get a polished post that sounds exactly
+                like you.
+              </p>
+            </div>
+            <div class="ksteps-feature">
+              <div class="ksteps-dot"></div>
+              <p>
+                Share a document and get carousels, posts, and content ready to
+                publish.
+              </p>
+            </div>
+            <a href="https://k-steps.com" target="_blank" class="ksteps-link"
+              >Discover K-STEPS at k-steps.com</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="who">
+      <div class="section-inner">
+        <span class="section-label">Who This Is For</span>
+        <h2>
+          If You Have Expertise and You Want the Right People to Find You.
+        </h2>
+        <p>
+          Any professional who knows they should be more visible online but has
+          not been able to make it consistent. Whether you are a doctor, an
+          engineer, a teacher, a lawyer, a marketer, or an entrepreneur, if you
+          have expertise, this is for you.
+        </p>
+        <div class="signs-list">
+          <div class="sign-item">
+            <div class="sign-check"></div>
+            <p>
+              You have been meaning to post on LinkedIn but keep putting it off.
+            </p>
+          </div>
+          <div class="sign-item">
+            <div class="sign-check"></div>
+            <p>
+              You have tried posting before but stopped because it felt
+              inconsistent or inauthentic.
+            </p>
+          </div>
+          <div class="sign-item">
+            <div class="sign-check"></div>
+            <p>
+              You want to attract better opportunities, consulting work, or
+              speaking invitations through your online presence.
+            </p>
+          </div>
+          <div class="sign-item">
+            <div class="sign-check"></div>
+            <p>
+              You are building a personal brand alongside your career and need a
+              system that actually works with a busy schedule.
+            </p>
+          </div>
+          <div class="sign-item">
+            <div class="sign-check"></div>
+            <p>
+              You know your expertise is valuable but struggle to communicate it
+              in a way that lands online.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing">
+      <div class="section-inner">
+        <span class="section-label">A Final Word</span>
+        <h2>Visibility Is Not Vanity. It Is Strategy.</h2>
+        <p>
+          The professional who is seen gets the opportunity. The professional
+          who is not seen waits for it. 925+ Visibility is how you stop waiting.
+        </p>
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <h2>Start Showing Up.</h2>
+      <p>
+        Join 925+ and tell us you want to build your visibility. We will take it
+        from there.
+      </p>
+      <a href="register.html" class="btn-cream">Join 925+ Visibility</a>
+      <p class="fine-print">
+        Powered by K-STEPS Technologies. Built for African professionals.
+      </p>
+    </section>
+
+    <footer>
+      <div class="footer-inner">
+        <div>
+          <div class="footer-logo">925<sup>+</sup></div>
+          <div class="footer-tagline">More than the job. More than enough.</div>
+        </div>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="community.html">Community</a></li>
+          <li><a href="futures.html">925+ Futures</a></li>
+          <li><a href="health.html">925+ Health</a></li>
+          <li><a href="visibility.html">925+ Visibility</a></li>
+          <li><a href="funding.html">925+ Funding</a></li>
+          <li><a href="register.html">Join Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-bottom">
+        <span>925+ | Powered by K-STEPS Technologies</span>
+        <span>925plus.k-steps.com</span>
+      </div>
+    </footer>
+
+    <script>
+      const hamburger = document.getElementById("hamburger");
+      const mobileMenu = document.getElementById("mobileMenu");
+      hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("open");
+        mobileMenu.classList.toggle("open");
+        document.body.style.overflow = mobileMenu.classList.contains("open")
+          ? "hidden"
+          : "";
+      });
+      function closeMenu() {
+        hamburger.classList.remove("open");
+        mobileMenu.classList.remove("open");
+        document.body.style.overflow = "";
+      }
+    </script>
+  </body>
+</html>
