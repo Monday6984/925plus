@@ -7,17 +7,18 @@ on:
 
 jobs:
   deploy:
-    name: 🎉 FTP-Deploy-Action
+    name: FTP-Deploy-Action
     runs-on: ubuntu-latest
 
     steps:
       - name: 🚚 Checkout code
         uses: actions/checkout@v4
 
-      - name: 📂 Upload files via FTP
+      - name: FTP-Deploy-Action
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: /925plus.k-steps.com/
           
